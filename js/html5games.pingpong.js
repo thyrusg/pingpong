@@ -5,7 +5,11 @@ var KEY = {
 	S: 83
 }
 
-var pingpong = {}
+var pingpong = {
+	scoreA: 0, // score for player A
+	scoreB: 0 // score for player B
+}
+
 pingpong.pressedKeys = [];
 pingpong.ball = {
 	speed: 5,
@@ -29,8 +33,15 @@ $(function () {
 });
 
 function gameloop() {
+	checkScore();
 	moveBall();
 	movePaddles();
+}
+
+function checkScore() {
+	if (pingpong.scoreA === 10 || pingpong.scoreB === 10) {
+		confirm("You win !")
+	}
 }
 
 function movePaddles() {
@@ -72,9 +83,12 @@ function moveBall() {
 	if (ball.y + ball.speed*ball.directionY < 0) {
 		ball.directionY = 1;
 	}
+
 	// check right edge
 	if (ball.x + ball.speed*ball.directionX > playgroundWidth) {
 		// player B lost.
+		pingpong.scoreA++;
+		$("#scoreA").html(pingpong.scoreA);
 		// reset the ball;
 		ball.x = 250;
 		ball.y = 100;
@@ -87,6 +101,8 @@ function moveBall() {
 	// check left edge
 	if (ball.x + ball.speed*ball.directionX < 0) {
 		// player A lost
+		pingpong.scoreB++;
+		$("#scoreB").html(pingpong.scoreB);
 		// reset the ball;
 		ball.x = 150;
 		ball.y = 100;
@@ -102,7 +118,6 @@ function moveBall() {
 	// check left paddle
 	var paddleAX = parseInt($("#paddleA").css("left"))+parseInt($("#paddleA").css("width"));
 	var paddleAYBottom = parseInt($("#paddleA").css("top"))+parseInt($("#paddleA").css("height"));
-	//var paddleAYBottom = parseInt($("#paddleA").css("top"));
 	var paddleAYTop = parseInt($("#paddleA").css("top"));
 	if (ball.x + ball.speed * ball.directionX < paddleAX) {
 		if (ball.y + ball.speed*ball.directionY <= paddleAYBottom && ball.y + ball.speed*ball.directionY >= paddleAYTop) {
