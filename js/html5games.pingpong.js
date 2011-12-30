@@ -102,7 +102,7 @@ function moveBall() {
 	// check left paddle
 	var paddleAX = parseInt($("#paddleA").css("left"))+parseInt($("#paddleA").css("width"));
 	var paddleAYBottom = parseInt($("#paddleA").css("top"))+parseInt($("#paddleA").css("height"));
-	var paddleAYBottom = parseInt($("#paddleA").css("top"));
+	//var paddleAYBottom = parseInt($("#paddleA").css("top"));
 	var paddleAYTop = parseInt($("#paddleA").css("top"));
 	if (ball.x + ball.speed * ball.directionX < paddleAX) {
 		if (ball.y + ball.speed*ball.directionY <= paddleAYBottom && ball.y + ball.speed*ball.directionY >= paddleAYTop) {
