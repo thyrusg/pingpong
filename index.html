@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Ping Pong</title>
+	<style>
+		#playground {
+			background: #e0ffe0 url(images/pixel_grid.jpg);
+			width: 400px;
+			height: 200px;
+			position: relative;
+			overflow: hidden;
+		}
+
+		#ball {
+			background: #fbb;
+			position: absolute;
+			width: 20px;
+			height: 20px;
+			left: 150px;
+			top: 100px;
+			border-radius: 10px;
+		}
+
+		.paddle {
+			background: #bbf;
+			left: 50px;
+			top: 70px;
+			position: absolute;
+			width: 30px;
+			height: 70px;
+		}
+
+		#paddleB {
+			left: 320px;
+		}
+	</style>
+</head>
+<script src="js/jquery-1.7.1.min.js"></script>
+<script src="js/html5games.pingpong.js"></script>
+<body>
+	<div id="game">
+		<div id="playground">
+			<div id="paddleA" class="paddle"></div>
+			<div id="paddleB" class="paddle"></div>
+			<div id="ball"></div>
+		</div>
+	</div>
+	<header>
+		<h1>Ping Pong</h1>
+	</header>
+	<footer>
+		This is an example of creating a Ping Pong game.
+	</footer>
+<script src="js/jquery-1.7.1.min.js"></script>
+<script>
+$(function () {
+	alert("Welcome to the Ping Pong battle.");
+});
+</script>
+</body>
+</html>
